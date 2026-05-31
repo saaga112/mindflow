@@ -1,0 +1,125 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Canvas — Styles
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.canvas-wrapper {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background: var(--bg-canvas);
+}
+
+/* React Flow overrides */
+.canvas-wrapper .react-flow {
+  background: transparent !important;
+}
+
+.canvas-wrapper .react-flow__background {
+  opacity: 0.4;
+}
+
+/* ─── MiniMap ─────────────────────────────────────────────────────────────── */
+
+.canvas-wrapper .react-flow__minimap {
+  background: var(--glass-bg-strong) !important;
+  backdrop-filter: blur(var(--glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+  border: 1px solid var(--border-default) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-lg) !important;
+  bottom: 80px !important;
+  right: 16px !important;
+}
+
+/* ─── Controls ────────────────────────────────────────────────────────────── */
+
+.canvas-wrapper .react-flow__controls {
+  display: none;
+}
+
+/* ─── Canvas Gradient Overlay ─────────────────────────────────────────────── */
+
+.canvas-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      rgba(139, 92, 246, 0.06),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 80% 120%,
+      rgba(6, 182, 212, 0.04),
+      transparent 50%
+    );
+}
+
+/* ─── Empty State ─────────────────────────────────────────────────────────── */
+
+.empty-state {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  text-align: center;
+  pointer-events: none;
+  z-index: 1;
+  animation: fadeIn 1s var(--ease-out);
+}
+
+.empty-state-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--space-6);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.15));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-subtle);
+}
+
+.empty-state h2 {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  background: linear-gradient(135deg, var(--cyan-400), var(--purple-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.empty-state p {
+  font-size: var(--text-base);
+  color: var(--text-muted);
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+.empty-state .keyboard-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.keyboard-hint kbd {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}

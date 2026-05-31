@@ -1,0 +1,327 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Node Components — Shared Styles
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Base Node ───────────────────────────────────────────────────────────── */
+
+.node-card {
+  min-width: 360px;
+  max-width: 480px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-default);
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(var(--glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+  box-shadow: var(--shadow-lg);
+  animation: nodeAppear 500ms var(--ease-spring);
+  transition: border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
+}
+
+.node-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.node-card .node-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.node-card .node-header .node-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-sm);
+}
+
+.node-card .node-body {
+  padding: var(--space-4);
+}
+
+.node-card .node-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* ─── Question Node ───────────────────────────────────────────────────────── */
+
+.question-node {
+  border-color: rgba(6, 182, 212, 0.25);
+}
+
+.question-node:hover {
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: var(--shadow-xl), 0 0 30px var(--cyan-glow);
+}
+
+.question-node .node-header {
+  color: var(--cyan-400);
+}
+
+.question-node .node-header .node-icon {
+  background: rgba(6, 182, 212, 0.15);
+  color: var(--cyan-400);
+}
+
+.question-node .node-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan-500), var(--cyan-400), var(--cyan-500));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.question-node .question-text {
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.question-node .highlighted-context {
+  margin-bottom: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: rgba(6, 182, 212, 0.08);
+  border-left: 2px solid var(--cyan-500);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* ─── Answer Node ─────────────────────────────────────────────────────────── */
+
+.answer-node {
+  border-color: rgba(139, 92, 246, 0.25);
+  max-width: 520px;
+}
+
+.answer-node:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: var(--shadow-xl), 0 0 30px var(--purple-glow);
+}
+
+.answer-node.streaming {
+  border-color: rgba(139, 92, 246, 0.4);
+  animation: glow 2s ease-in-out infinite;
+}
+
+.answer-node .node-header {
+  color: var(--purple-400);
+}
+
+.answer-node .node-header .node-icon {
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--purple-400);
+}
+
+.answer-node .node-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--purple-500), var(--purple-400), var(--purple-500));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.answer-node .node-body {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.answer-node .node-actions {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.answer-node .node-actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.answer-node .node-actions button:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* Streaming cursor */
+.streaming-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 18px;
+  margin-left: 2px;
+  background: var(--purple-400);
+  border-radius: 2px;
+  animation: typingCursor 1s ease-in-out infinite;
+  vertical-align: text-bottom;
+}
+
+/* Streaming shimmer */
+.streaming-shimmer {
+  padding: var(--space-4);
+}
+
+.shimmer-line {
+  height: 12px;
+  margin-bottom: var(--space-3);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--bg-elevated) 25%,
+    var(--bg-hover) 50%,
+    var(--bg-elevated) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.shimmer-line:nth-child(1) { width: 90%; }
+.shimmer-line:nth-child(2) { width: 75%; }
+.shimmer-line:nth-child(3) { width: 60%; }
+
+/* Error state */
+.answer-error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(244, 63, 94, 0.08);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--rose-400);
+  font-size: var(--text-sm);
+}
+
+/* ─── Note Node ───────────────────────────────────────────────────────────── */
+
+.note-node {
+  min-width: 220px;
+  max-width: 320px;
+  border-color: rgba(245, 158, 11, 0.25);
+}
+
+.note-node:hover {
+  border-color: rgba(245, 158, 11, 0.4);
+  box-shadow: var(--shadow-xl), 0 0 30px var(--amber-glow);
+}
+
+.note-node .node-header {
+  color: var(--amber-400);
+}
+
+.note-node .node-header .node-icon {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--amber-400);
+}
+
+.note-node .node-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--amber-500), var(--amber-400), var(--amber-500));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.note-node textarea {
+  width: 100%;
+  min-height: 60px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  resize: none;
+}
+
+.note-node textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* ─── React Flow Handle Styles ────────────────────────────────────────────── */
+
+.react-flow__handle {
+  width: 10px !important;
+  height: 10px !important;
+  border: 2px solid var(--bg-surface) !important;
+  border-radius: 50% !important;
+  transition: all var(--duration-fast) var(--ease-out) !important;
+}
+
+.react-flow__handle-top {
+  top: -5px !important;
+}
+
+.react-flow__handle-bottom {
+  bottom: -5px !important;
+}
+
+.question-node .react-flow__handle {
+  background: var(--cyan-500) !important;
+}
+
+.answer-node .react-flow__handle {
+  background: var(--purple-500) !important;
+}
+
+.react-flow__handle:hover {
+  transform: scale(1.3) !important;
+  box-shadow: 0 0 8px var(--cyan-glow-strong) !important;
+}
+
+/* ─── Model Badge ─────────────────────────────────────────────────────────── */
+
+.model-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px var(--space-2);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+.model-badge .badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--emerald-400);
+}
+
+.model-badge .badge-dot.streaming {
+  animation: pulse 1.5s ease-in-out infinite;
+}

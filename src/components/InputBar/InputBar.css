@@ -1,0 +1,90 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   InputBar — Styles
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.input-bar {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-toolbar);
+  width: min(680px, calc(100vw - 48px));
+  animation: fadeInUp 500ms var(--ease-out);
+}
+
+.input-bar-container {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(var(--glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  transition: border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.input-bar-container:focus-within {
+  border-color: var(--cyan-500);
+  box-shadow: var(--shadow-xl), 0 0 0 3px var(--cyan-glow), 0 0 30px var(--cyan-glow);
+}
+
+.input-bar textarea {
+  flex: 1;
+  padding: var(--space-2) var(--space-3);
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  resize: none;
+  max-height: 120px;
+  min-height: 24px;
+}
+
+.input-bar textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.input-bar .send-btn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--cyan-600), var(--purple-600));
+  color: white;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.input-bar .send-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--cyan-500), var(--purple-500));
+  box-shadow: 0 4px 20px var(--cyan-glow);
+  transform: scale(1.05);
+}
+
+.input-bar .send-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.input-bar .send-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.input-bar-hint {
+  text-align: center;
+  margin-top: var(--space-2);
+  font-size: 11px;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
