@@ -1,6 +1,6 @@
 # MindFlow — Infinite Canvas AI Learning Platform
 
-MindFlow is a modern, open-source AI learning platform that replaces traditional linear chat with an **infinite, explorable visual graph**. Every question, answer, and annotation becomes a node in a knowledge tree.
+MindFlow is a modern, open-source AI learning platform that replaces traditional linear chat with an **infinite, explorable visual graph**. Every question, answer, and annotation becomes a node in a living knowledge map — helping users think, learn, and research visually.
 
 ![MindFlow UI Concept](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop) *(Placeholder for actual screenshot)*
 
@@ -69,6 +69,3 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 3. Highlight any interesting text in the AI's response and click "Ask about this" to branch off.
 4. Add sticky notes using the toolbar to annotate your graph.
 5. Use the layout button in the toolbar to auto-arrange messy nodes.
-
-## 📄 License
-MIT License
