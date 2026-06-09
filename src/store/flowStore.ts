@@ -39,7 +39,8 @@ interface FlowStore {
     content: string,
     parentId?: string,
     highlightedText?: string,
-    position?: { x: number; y: number }
+    position?: { x: number; y: number },
+    model?: string
   ) => { questionNodeId: string; answerNodeId: string };
 
   updateAnswerContent: (nodeId: string, chunk: string) => void;
@@ -103,7 +104,7 @@ export const useFlowStore = create<FlowStore>((set, get) => ({
 
   // ── Node operations ──
 
-  addQuestionNode: (content, parentId, highlightedText, position) => {
+  addQuestionNode: (content, parentId, highlightedText, position, model) => {
     const { nodes, edges } = get();
     const questionNodeId = generateId('q');
     const answerNodeId = generateId('a');
@@ -147,7 +148,7 @@ export const useFlowStore = create<FlowStore>((set, get) => ({
         type: 'answer',
         content: '',
         isStreaming: true,
-        model: 'gpt-4o',
+        model: model || 'gpt-4o',
         timestamp: Date.now(),
       },
     };

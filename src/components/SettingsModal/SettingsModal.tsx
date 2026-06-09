@@ -36,7 +36,7 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
     setProvider(newProvider);
     // Set default model for the selected provider
     if (newProvider === 'openai') setModel('gpt-4o');
-    if (newProvider === 'anthropic') setModel('claude-3-5-sonnet-20240620');
+    if (newProvider === 'anthropic') setModel('claude-sonnet-4-5');
     if (newProvider === 'google') setModel('gemini-1.5-pro-latest');
   };
 
@@ -296,9 +296,9 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   )}
                   {provider === 'anthropic' && (
                     <>
-                      <option value="claude-3-5-sonnet-20240620">Claude 3.5 Sonnet</option>
-                      <option value="claude-3-opus-20240229">Claude 3 Opus</option>
-                      <option value="claude-3-haiku-20240307">Claude 3 Haiku</option>
+                      <option value="claude-sonnet-4-5">Claude Sonnet 4.5</option>
+                      <option value="claude-opus-4-5">Claude Opus 4.5</option>
+                      <option value="claude-haiku-4-5-20251001">Claude Haiku 4.5</option>
                     </>
                   )}
                   {provider === 'google' && (

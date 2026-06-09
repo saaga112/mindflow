@@ -31,7 +31,8 @@ export function useAIChat() {
         question,
         parentNodeId,
         highlightedText,
-        position
+        position,
+        model
       );
 
       // Auto-layout if enabled
@@ -63,8 +64,11 @@ export function useAIChat() {
         }
 
         // Read the streaming response
+        // toTextStreamResponse() uses the Vercel AI SDK data stream protocol.
+        // Each line looks like: 0:"chunk text"\n  — we extract just the text part.
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
+        let buffer = '';
 
         let done = false;
         while (!done) {
@@ -72,10 +76,29 @@ export function useAIChat() {
           done = readerDone;
 
           if (value) {
-            const chunk = decoder.decode(value, { stream: true });
-            // toTextStreamResponse sends plain text chunks
-            updateAnswerContent(answerNodeId, chunk);
+            buffer += decoder.decode(value, { stream: true });
+            const lines = buffer.split('\n');
+            buffer = lines.pop() ?? '';
+
+            for (const line of lines) {
+              // Data stream format: 0:"text chunk"
+              if (line.startsWith('0:')) {
+                try {
+                  const text = JSON.parse(line.slice(2));
+                  updateAnswerContent(answerNodeId, text);
+                } catch {
+                  // skip malformed lines
+                }
+              }
+            }
           }
+        }
+        // Flush any remaining buffer
+        if (buffer.startsWith('0:')) {
+          try {
+            const text = JSON.parse(buffer.slice(2));
+            updateAnswerContent(answerNodeId, text);
+          } catch { /* ignore */ }
         }
 
         finalizeAnswer(answerNodeId);

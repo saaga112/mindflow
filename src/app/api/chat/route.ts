@@ -50,7 +50,7 @@ export async function POST(req: Request) {
       const keyToUse = apiMode === 'custom' ? apiKey : process.env.ANTHROPIC_API_KEY;
       if (!keyToUse) throw new Error('Anthropic API Key is missing.');
       const customAnthropic = createAnthropic({ apiKey: keyToUse });
-      aiModel = customAnthropic(modelId || 'claude-3-5-sonnet-20240620');
+      aiModel = customAnthropic(modelId || 'claude-sonnet-4-5');
     } else if (provider === 'google') {
       const keyToUse = apiMode === 'custom' ? apiKey : process.env.GOOGLE_GENERATIVE_AI_API_KEY;
       if (!keyToUse) throw new Error('Google Gemini API Key is missing.');

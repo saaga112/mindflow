@@ -1,12 +1,25 @@
 'use client';
 
 import { Trash2, Copy, GitBranch } from 'lucide-react';
+import { useState, useCallback } from 'react';
 import { useFlowStore } from '@/store/flowStore';
+import { useAIChat } from '@/hooks/useAIChat';
 
 export function ContextMenu() {
   const contextMenu = useFlowStore((s) => s.contextMenu);
   const closeContextMenu = useFlowStore((s) => s.closeContextMenu);
   const deleteNode = useFlowStore((s) => s.deleteNode);
+  const { sendQuestion } = useAIChat();
+  const [branchInput, setBranchInput] = useState('');
+  const [showBranchInput, setShowBranchInput] = useState(false);
+
+  const handleBranch = useCallback(async () => {
+    if (!branchInput.trim() || !contextMenu.nodeId) return;
+    await sendQuestion(branchInput.trim(), contextMenu.nodeId);
+    setBranchInput('');
+    setShowBranchInput(false);
+    closeContextMenu();
+  }, [branchInput, contextMenu.nodeId, sendQuestion, closeContextMenu]);
 
   if (!contextMenu.isOpen || !contextMenu.nodeId) return null;
 
@@ -85,10 +98,41 @@ export function ContextMenu() {
           <Copy size={14} />
           Copy Node ID
         </button>
-        <button className="context-menu-item" onClick={closeContextMenu}>
-          <GitBranch size={14} />
-          Create Branch
-        </button>
+        {showBranchInput ? (
+          <div style={{ padding: 'var(--space-2)', display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+            <input
+              autoFocus
+              type="text"
+              value={branchInput}
+              onChange={(e) => setBranchInput(e.target.value)}
+              onKeyDown={(e) => { if (e.key === 'Enter') handleBranch(); if (e.key === 'Escape') setShowBranchInput(false); }}
+              placeholder="Ask a follow-up..."
+              style={{
+                padding: 'var(--space-2) var(--space-3)',
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border-default)',
+                borderRadius: 'var(--radius-md)',
+                color: 'var(--text-primary)',
+                fontFamily: 'var(--font-sans)',
+                fontSize: 'var(--text-sm)',
+                outline: 'none',
+              }}
+            />
+            <button
+              className="context-menu-item"
+              onClick={handleBranch}
+              disabled={!branchInput.trim()}
+            >
+              <GitBranch size={14} />
+              Ask from here
+            </button>
+          </div>
+        ) : (
+          <button className="context-menu-item" onClick={() => setShowBranchInput(true)}>
+            <GitBranch size={14} />
+            Create Branch
+          </button>
+        )}
         <div className="context-menu-divider" />
         <button className="context-menu-item danger" onClick={handleDelete}>
           <Trash2 size={14} />

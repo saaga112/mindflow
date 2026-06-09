@@ -2,13 +2,13 @@
 
 MindFlow is a modern, open-source AI learning platform that replaces traditional linear chat with an **infinite, explorable visual graph**. Every question, answer, and annotation becomes a node in a living knowledge map — helping users think, learn, and research visually.
 
-![MindFlow UI Concept](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop) *(Placeholder for actual screenshot)*
+> 📸 **Screenshot coming soon** — clone the repo and run `npm run dev` to see it in action.
 
 ## ✨ Features
 
 - **Infinite Canvas**: Pan, zoom, and explore your learning sessions freely.
 - **Highlight-to-Branch**: Select any text in an AI response to create a specific follow-up branch, keeping tangents isolated from the main flow.
-- **Multi-Model Support**: Use OpenAI (GPT-4o), Anthropic (Claude 3.5), or Google (Gemini 1.5).
+- **Multi-Model Support**: Use OpenAI (GPT-4o), Anthropic (Claude Sonnet 4.5), or Google (Gemini 1.5).
 - **Hybrid Auth Mode**: 
   - **Platform Hosted**: Log in with Google/GitHub and use the platform's API keys.
   - **Bring Your Own Key (BYOK)**: Don't want to log in? Just paste your own API key in settings.
@@ -29,7 +29,7 @@ MindFlow is a modern, open-source AI learning platform that replaces traditional
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/mindflow.git
+git clone https://github.com/saaga112/mindflow.git
 cd mindflow
 ```
 
