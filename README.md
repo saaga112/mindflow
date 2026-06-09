@@ -1,8 +1,30 @@
-# MindFlow — Infinite Canvas AI Learning Platform
+<p align="center">
+  <img src="public/banner.svg" alt="MindFlow Banner" width="100%" />
+</p>
+
+<h1 align="center">MindFlow</h1>
+
+<p align="center">
+  <strong>Infinite Canvas AI Learning Platform</strong>
+</p>
+
+<p align="center">
+  <a href="#-features">Features</a> &nbsp;&bull;&nbsp;
+  <a href="#%EF%B8%8F-tech-stack">Tech Stack</a> &nbsp;&bull;&nbsp;
+  <a href="#-getting-started">Getting Started</a> &nbsp;&bull;&nbsp;
+  <a href="#-how-to-use">How to Use</a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-15-black?logo=next.js" alt="Next.js 15" />
+  <img src="https://img.shields.io/badge/React_Flow-Canvas-06b6d4?logo=react" alt="React Flow" />
+  <img src="https://img.shields.io/badge/Vercel_AI_SDK-Streaming-8b5cf6" alt="AI SDK" />
+  <img src="https://img.shields.io/badge/License-MIT-f59e0b" alt="License" />
+</p>
+
+---
 
 MindFlow is a modern, open-source AI learning platform that replaces traditional linear chat with an **infinite, explorable visual graph**. Every question, answer, and annotation becomes a node in a living knowledge map — helping users think, learn, and research visually.
-
-> 📸 **Screenshot coming soon** — clone the repo and run `npm run dev` to see it in action.
 
 ## ✨ Features
 
